@@ -25,7 +25,7 @@ const config = {
     },
 
     MONGO: {
-        MONGO_DB_URL: 'mongodb+srv://wolt_reader:JJzd7SFJ2K4eXj3@playgrounds.rrd09yy.mongodb.net/',
+        MONGO_DB_URL: process.env.MONGO_DB_URL,
         WOLT_DB: 'Wolt',
         COLLECTIONS: {
             SUBSCRIPTIONS: 'Subscription',
