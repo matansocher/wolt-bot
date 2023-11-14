@@ -39,6 +39,7 @@ async function refreshRestaurants() {
         const restaurants = await woltService.getRestaurantsList();
         if (restaurants.length) {
             restaurantsList = [...restaurants];
+            console.log('Restaurants list was refreshed successfully');
         }
     } catch (err) {
         console.log('refreshRestaurants::err', err);
