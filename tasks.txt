@@ -1,0 +1,4 @@
+
+save users in User collection
+save analytic logs in InteractionLog collection
+better coding style and code splitting
