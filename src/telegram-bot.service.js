@@ -126,8 +126,8 @@ function getSecondsToNextRefresh() {
 
 // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ bot interceptors $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 bot.onText(/\/start/, async (message, match) => {
-    const { chatId, firstName, lastName, text: messageText, telegramUserId, username } = getMessageData(message);
-    const logBody = `/\start :: chatId: ${chatId}, firstname: ${firstName}, lastname: ${lastName}, messageText: ${messageText}`;
+    const { chatId, firstName, lastName, telegramUserId, username } = getMessageData(message);
+    const logBody = `/\start :: chatId: ${chatId}, firstname: ${firstName}, lastname: ${lastName}`;
     try {
         await setBotTyping(chatId);
 
@@ -180,7 +180,7 @@ bot.on('message', async (msg) => {
     const { chatId, firstName, lastName, text: restaurant } = getMessageData(msg);
 
     // prevent start and show to be processed also here
-    if (messageText.startsWith('/')) {
+    if (restaurant.startsWith('/')) {
         return;
     }
 
@@ -313,7 +313,7 @@ function getInlineKeyboardMarkup(inlineKeyboardButtons) {
     return JSON.stringify(inlineKeyboard);
 }
 
-function getFilteredRestaurants(searchInput) { // messages: [ messageText: string, channelId: number, fromChannelName: string ]
+function getFilteredRestaurants(searchInput) {
     const restaurants = [...restaurantsList];
     return restaurants.filter(restaurant => {
         return restaurant.name.toLowerCase().includes(searchInput.toLowerCase());
